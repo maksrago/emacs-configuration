@@ -1,0 +1,5 @@
+(package-initialize)
+(require 'elfeed-org)
+(elfeed-org)
+(setq rmh-elfeed-org-files (list "~/.emacs.d/rss_feed.org"))
+(org-babel-load-file "~/.emacs.d/conf.org")

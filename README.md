@@ -3,10 +3,10 @@
 #Preface
 This repository contains a series of various files that I use in order to organize and intialize my Emacs configuration. If you have any specific questions regarding how something works, or why I use a specific package please send all inqueries to my personal email, maxrago123@gmail.com.
 
-#.emacs
-My .emacs file simply consists of the necessary components to pull code off of conf.org (this file contains all of my actual configuration).
+#.init.el
+My .init.el file simply consists of the necessary components to pull code off of conf.org (this file contains all of my actual configuration).
 
-#init.org
+#conf.org
 This file organizes all of the components of my large (and continously growing) Emacs configuration. This file is located inside my .emacs.d (main Emacs directory). I decided to move over to this method of configuration management in an attempt to make updating various components easier after not viewing them for some time. Furthermore, I think it makes my configuration much easier to be read by others.
 
 #Finally...

@@ -1,0 +1,1468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-10-25 Tue 12:39 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs Configuration File v2.0</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Maksymilian Rago" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="http://thomasf.github.io/solarized-css/solarized-dark.css" type="text/css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Configuration File v2.0</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline74">1. Master List</a>
+<ul>
+<li><a href="#orgheadline1">1.1. User Details</a></li>
+<li><a href="#orgheadline2">1.2. Thememing</a></li>
+<li><a href="#orgheadline5">1.3. Package Management</a>
+<ul>
+<li><a href="#orgheadline3">1.3.1. Default Packages</a></li>
+<li><a href="#orgheadline4">1.3.2. Install Default Packages</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline17">1.4. Start-up Options</a>
+<ul>
+<li><a href="#orgheadline6">1.4.1. Splash Screen</a></li>
+<li><a href="#orgheadline7">1.4.2. Scroll bar, Tool bar, Menu bar</a></li>
+<li><a href="#orgheadline8">1.4.3. Display Time</a></li>
+<li><a href="#orgheadline9">1.4.4. Highlight Active Line</a></li>
+<li><a href="#orgheadline10">1.4.5. Marking/Deleting Text</a></li>
+<li><a href="#orgheadline11">1.4.6. Backup Files</a></li>
+<li><a href="#orgheadline12">1.4.7. Warning Level</a></li>
+<li><a href="#orgheadline13">1.4.8. Yes and No</a></li>
+<li><a href="#orgheadline15">1.4.9. Display Settings</a></li>
+<li><a href="#orgheadline16">1.4.10. Indentation</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline73">1.5. Utilities</a>
+<ul>
+<li><a href="#orgheadline19">1.5.1. Smex</a></li>
+<li><a href="#orgheadline20">1.5.2. Ido</a></li>
+<li><a href="#orgheadline21">1.5.3. Column number mode</a></li>
+<li><a href="#orgheadline22">1.5.4. Temporary file prevention/deletion</a></li>
+<li><a href="#orgheadline23">1.5.5. auto-fill-mode</a></li>
+<li><a href="#orgheadline24">1.5.6. autopair-mode</a></li>
+<li><a href="#orgheadline25">1.5.7. show-paren-mode</a></li>
+<li><a href="#orgheadline26">1.5.8. auto-complete</a></li>
+<li><a href="#orgheadline27">1.5.9. flycheck-mode</a></li>
+<li><a href="#orgheadline28">1.5.10. flyspell</a></li>
+<li><a href="#orgheadline29">1.5.11. calfw</a></li>
+<li><a href="#orgheadline36">1.5.12. Org-mode</a></li>
+<li><a href="#orgheadline37">1.5.13. highlight-indentation</a></li>
+<li><a href="#orgheadline38">1.5.14. fill-column-indicator</a></li>
+<li><a href="#orgheadline39">1.5.15. beacon</a></li>
+<li><a href="#orgheadline40">1.5.16. auto-complete-c-headers</a></li>
+<li><a href="#orgheadline62">1.5.17. elfeed</a></li>
+<li><a href="#orgheadline63">1.5.18. impatient-mode</a></li>
+<li><a href="#orgheadline64">1.5.19. yasnippet</a></li>
+<li><a href="#orgheadline69">1.5.20. engine-mode</a></li>
+<li><a href="#orgheadline70">1.5.21. highlight-indent-guides</a></li>
+<li><a href="#orgheadline71">1.5.22. Livestreamer to VLC</a></li>
+<li><a href="#orgheadline72">1.5.23. Miscellaneous Export Settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline74" class="outline-2">
+<h2 id="orgheadline74"><span class="section-number-2">1</span> Master List</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> User Details</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Emacs will normally pick this up automatically, but this way I can be
+sure the right information is always present.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq user-full-name <span style="color: #00ff00;">"Maksymilian Rago"</span>)
+(setq user-mail-address <span style="color: #00ff00;">""</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> Thememing</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Defines a <code>custom-theme-load-path</code>. This is useful for thems that
+aren't available within the standard package archives i.e. elpa,
+melpa, or melpa-stable.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'custom-theme-load-path
+<span style="color: #00ff00;">"~/.emacs.d/files/"</span>)
+</pre>
+</div>
+
+<p>
+Non-manually entered bit of elisp that is generated by Emacs in order
+to 'tell itself' that it is a safe theme to load. This bit is set to
+be changed in the near future.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(custom-set-variables
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">custom-set-variables was added by Custom.</span>
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">If you edit it by hand, you could mess it up, so be careful.</span>
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">Your init file should contain only one such instance.</span>
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">If there is more than one, they won't work right.</span>
+'(custom-enabled-themes (quote (tty-dark)))
+'(custom-safe-themes (quote (<span style="color: #00ff00;">"7b36f45e5f014ac5d463fa1fe627df6f2094484d31c8aecd77d06b0b23844532"</span> default))))
+</pre>
+</div>
+
+<p>
+Changes custom font to Unifont Medium, size 12. Only changes the font
+in GUI mode.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(set-frame-font <span style="color: #00ff00;">"Unifont-12"</span> nil t)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">1.3</span> Package Management</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Simply defines a place for Emacs to look for packages. In other words,
+these websites host several different packages that can be downloaded
+and added to Emacs.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(load <span style="color: #00ff00;">"package"</span>)
+(package-initialize)
+(add-to-list 'package-archives
+'(<span style="color: #00ff00;">"gnu"</span> . <span style="color: #00ff00;">"http://elpa.gnu.org/packages/"</span>) t)
+(add-to-list 'package-archives
+'(<span style="color: #00ff00;">"melpa"</span> . <span style="color: #00ff00;">"http://melpa.milkbox.net/packages/"</span>) t)
+
+(setq package-archive-enable-alist '((<span style="color: #00ff00;">"melpa"</span> deft magit)))
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3"><span class="section-number-4">1.3.1</span> Default Packages</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+Complicated at first glance, does a rather simple set of
+things. First of which is taking a set of user input 'values.'  These
+'values' are package names that are hosted on the above
+<code>package-archives</code>. Additonally, it checks if the package is
+installed, and/or if it requires/has an update.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"> (<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">package</span>)
+ (<span style="color: #ff0000;">defvar</span> <span style="color: #0000ff;">packages</span>
+   '(autopair
+     auto-complete
+     auto-complete-c-headers
+     beacon
+     calfw
+     dired-filetype-face
+     elfeed
+     elfeed-org
+     engine-mode
+     fill-column-indicator
+     flycheck
+     goto-chg
+     highlight-indentation
+     highlight-indent-guides
+     ido-vertical-mode
+     impatient-mode
+     ox-twbs
+     peep-dired
+     smex
+     yasnippet)
+<span style="color: #00ff00;">"a list of packages to ensure are installed at launch."</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4"><span class="section-number-4">1.3.2</span> Install Default Packages</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+Downloads listed packages in 'Default Packages'.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">cl</span>)
+(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">packages-installed-p</span> ()
+  (<span style="color: #ff0000;">loop</span> for pkg in packages
+        when (not (package-installed-p pkg)) do (<span style="color: #ff0000;">return</span> nil)
+        finally (<span style="color: #ff0000;">return</span> t)))
+
+(<span style="color: #ff0000;">unless</span> (packages-installed-p)
+  (message <span style="color: #00ff00;">"%s"</span> <span style="color: #00ff00;">"Refreshing package database..."</span>)
+  (package-refresh-contents)
+  (<span style="color: #ff0000;">dolist</span> (pkg packages)
+    (<span style="color: #ff0000;">when</span> (not (package-installed-p pkg))
+      (package-install pkg))))
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17"><span class="section-number-3">1.4</span> Start-up Options</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">1.4.1</span> Splash Screen</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+Skips straight to the scratch buffer and eliminates the default Emacs
+startup screen. It also sets the default to <code>org-mode</code> rather than
+<code>fundamental-mode</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq inhibit-splash-screen t
+      initial-scratch-message nil)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7"><span class="section-number-4">1.4.2</span> Scroll bar, Tool bar, Menu bar</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+Disables the menu bar, scroll bar, and tool bar.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8"><span class="section-number-4">1.4.3</span> Display Time</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<p>
+Displays the current time on the mode line.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(display-time-mode t)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><span class="section-number-4">1.4.4</span> Highlight Active Line</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<p>
+<code>hl-line-mode</code> highlights the current line and makes keeping track of
+your location much easier.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-hl-line-mode 1)
+(set-face-background hl-line-face <span style="color: #00ff00;">"gray13"</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">1.4.5</span> Marking/Deleting Text</h4>
+<div class="outline-text-4" id="text-1-4-5">
+<p>
+The following allows a more standard text editor text deletion method,
+In other words whenever a mark is made and text typed it deletes the
+selected text. The final line allows Emacs to work with the operating
+system clipboard, in other words, the keyring is no longer the only
+way that Emacs grabs copied data.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(delete-selection-mode t)
+(transient-mark-mode t)
+(setq x-select-enable-clipboard t)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><span class="section-number-4">1.4.6</span> Backup Files</h4>
+<div class="outline-text-4" id="text-1-4-6">
+<p>
+File backup files
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #00ffff;">;; </span><span style="color: #00ffff;">(setq make-backup-files t</span>
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">backup-by-copying t</span>
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">version-control t</span>
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">auto-save-default t</span>
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">auto-save-timeout 20</span>
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">auto-save-interval 200</span>
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">)</span>
+
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">(setq backup-directory-alist '(("." . "~/ownCloud/Files/Backups")))</span>
+<span style="color: #00ffff;">;; </span><span style="color: #00ffff;">if you change your mind activate the command below to have no backup files</span>
+(setq make-backup-files nil)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">1.4.7</span> Warning Level</h4>
+<div class="outline-text-4" id="text-1-4-7">
+<p>
+Sets the <code>warning-minimum-level</code> to emergency levels to prevent
+annoying small errors.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #00ffff;">;;</span><span style="color: #00ffff;">(setq warning-minimum-level :emergency)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">1.4.8</span> Yes and No</h4>
+<div class="outline-text-4" id="text-1-4-8">
+<p>
+Prevents having to type 'yes' or 'no' and instead allows you to type
+'y' or 'n'.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defalias</span> '<span style="color: #00ffff;">yes-or-no-p</span> 'y-or-n-p)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><span class="section-number-4">1.4.9</span> Display Settings</h4>
+<div class="outline-text-4" id="text-1-4-9">
+<p>
+Puts empty line markers into the left hand side when reaching the
+bottom of a page.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq-default indicate-empty-lines t)
+(<span style="color: #ff0000;">when</span> (not indicate-empty-lines)
+  (toggle-indicate-empty-lines))
+</pre>
+</div>
+</div>
+<ol class="org-ol"><li><a id="orgheadline14"></a>Line-number<br  /><div class="outline-text-5" id="text-1-4-9-1">
+<p>
+Display line number on the right hand side globally.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-linum-mode t)
+</pre>
+</div>
+</div></li></ol>
+</div>
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16"><span class="section-number-4">1.4.10</span> Indentation</h4>
+<div class="outline-text-4" id="text-1-4-10">
+<p>
+This re-indents, untabifies, and cleans up whitespace. It is stolen
+directly from the emacs-starter-kit.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">untabify-buffer</span> ()
+  (interactive)
+  (untabify (point-min) (point-max)))
+
+(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">indent-buffer</span> ()
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">cleanup-buffer</span> ()
+  <span style="color: #00ff00;">"Perform a bunch of operations on the whitespace content of a</span>
+<span style="color: #00ff00;">  buffer."</span>
+  (interactive)
+  (indent-buffer)
+  (untabify-buffer)
+  (delete-trailing-whitespace))
+
+(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">cleanup-region</span> (beg end)
+  <span style="color: #00ff00;">"Remove tmux artifacts from region."</span>
+  (interactive <span style="color: #00ff00;">"r"</span>)
+  (<span style="color: #ff0000;">dolist</span> (re '(<span style="color: #00ff00;">"\\\\&#9474;\&#183;*\n"</span> <span style="color: #00ff00;">"\W*&#9474;\&#183;*"</span>))
+    (replace-regexp re <span style="color: #00ff00;">""</span> nil beg end)))
+
+(global-set-key (kbd <span style="color: #00ff00;">"C-x M-t"</span>) 'cleanup-region)
+(global-set-key (kbd <span style="color: #00ff00;">"C-c n"</span>) 'cleanup-buffer)
+
+(setq-default show-trailing-whitespace t)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline73" class="outline-3">
+<h3 id="orgheadline73"><span class="section-number-3">1.5</span> Utilities</h3>
+<div class="outline-text-3" id="text-1-5">
+</div><div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">1.5.1</span> Smex</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+<code>smex</code> provides history and searching on top of <code>M-x</code>. Additionally,
+this initlializes <code>smex</code> and rebinds it to <code>M-x</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">smex</span>)
+
+(smex-initialize)
+
+(global-set-key (kbd <span style="color: #00ff00;">"M-x"</span>) 'smex)
+(global-set-key (kbd <span style="color: #00ff00;">"M-X"</span>) 'smex-major-mode-commands)
+</pre>
+</div>
+</div>
+<ol class="org-ol"><li><a id="orgheadline18"></a>Restoring old M-x functions<br  /><div class="outline-text-5" id="text-1-5-1-1">
+<p>
+Adds a "-" after pressing space like regular M-x
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defadvice</span> <span style="color: #00ffff;">smex</span> (around space-inserts-hyphen activate compile)
+        (<span style="color: #ff0000;">let</span> ((ido-cannot-complete-command
+               `(<span style="color: #ff0000;">lambda</span> ()
+                  (interactive)
+                  (<span style="color: #ff0000;">if</span> (string= <span style="color: #00ff00;">" "</span> (this-command-keys))
+                      (insert ?-)
+                    (funcall ,ido-cannot-complete-command)))))
+          ad-do-it))
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-4">
+<h4 id="orgheadline20"><span class="section-number-4">1.5.2</span> Ido</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+Ido provides a more aesthetically pleasing way of navigating the
+filesystem.This enables <code>ido-mode</code> as well as <code>ido-vertical-mode</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">ido</span>)
+(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">ido-vertical-mode</span>)
+
+(ido-mode 1)
+(ido-vertical-mode 1)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21"><span class="section-number-4">1.5.3</span> Column number mode</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+Turns on <code>column-number-mode</code> which is listed next to the line number
+in the mini buffer.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq column-number-mode t)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">1.5.4</span> Temporary file prevention/deletion</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+Prevents/deletes temporary files. This makes them go away!
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq backup-directory-alist `((<span style="color: #00ff00;">".*"</span> . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((<span style="color: #00ff00;">".*"</span> ,temporary-file-directory t)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="orgheadline23"><span class="section-number-4">1.5.5</span> auto-fill-mode</h4>
+<div class="outline-text-4" id="text-1-5-5">
+<p>
+Similar to <code>refill-mode</code>, but auto wraps text automatically as you
+write.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'text-mode-hook 'turn-on-auto-fill)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24"><span class="section-number-4">1.5.6</span> autopair-mode</h4>
+<div class="outline-text-4" id="text-1-5-6">
+<p>
+This makes sure that <code>()</code>, <code>[]</code>, <code>{}</code>, to be automatically closed as
+soon as they are typed.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">autopair</span>)
+(autopair-global-mode 1)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="section-number-4">1.5.7</span> show-paren-mode</h4>
+<div class="outline-text-4" id="text-1-5-7">
+<p>
+Display corresponding parenthesis.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(show-paren-mode 1)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline26" class="outline-4">
+<h4 id="orgheadline26"><span class="section-number-4">1.5.8</span> auto-complete</h4>
+<div class="outline-text-4" id="text-1-5-8">
+<p>
+Turns on auto complete.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">auto-complete</span>)
+(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">auto-complete-config</span>)
+(ac-config-default)
+(global-auto-complete-mode t)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27"><span class="section-number-4">1.5.9</span> flycheck-mode</h4>
+<div class="outline-text-4" id="text-1-5-9">
+<p>
+<code>flycheck-mode</code> is a syntax highlighter for Emacs, and regularly
+checks over code.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">flycheck</span>)
+(global-flycheck-mode)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="section-number-4">1.5.10</span> flyspell</h4>
+<div class="outline-text-4" id="text-1-5-10">
+<p>
+This is the built-in Emacs spell checker.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq flyspell-issue-welcome-flag nil)
+(<span style="color: #ff0000;">if</span> (eq system-type 'darwin)
+(setq-default ispell-program-name <span style="color: #00ff00;">"/usr/local/bin/aspell"</span>)
+(setq-default ispell-program-name <span style="color: #00ff00;">"/usr/bin/aspell"</span>))
+(setq-default ispell-list-command <span style="color: #00ff00;">"list"</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline29" class="outline-4">
+<h4 id="orgheadline29"><span class="section-number-4">1.5.11</span> calfw</h4>
+<div class="outline-text-4" id="text-1-5-11">
+<p>
+<code>calfw</code> is a calander framework for Emacs which displays an ASCII
+calander in an Emacs buffer. It can be matched with org-mode to link
+<code>TODO</code> items and more. This changes the start of the week to Sunday
+rather than Monday (0 = Sunday, 1 = Monday).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">calfw</span>)
+(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">calfw-org</span>)
+
+(setq calendar-week-start-day 0)
+
+(global-set-key (kbd <span style="color: #00ff00;">"&lt;f12&gt;"</span>) 'cfw:open-org-calendar)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline36" class="outline-4">
+<h4 id="orgheadline36"><span class="section-number-4">1.5.12</span> Org-mode</h4>
+<div class="outline-text-4" id="text-1-5-12">
+<p>
+Just initialize <code>org-mode</code> and different parts of it to make different
+parts of copying source blocks possible. In other words it <code>init.el</code>
+or <code>.emacs</code> possible to be written in an <code>.org</code> file, such as this
+one.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">org-install</span>)
+(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">ob</span>)
+(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">ob-tangle</span>)
+</pre>
+</div>
+</div>
+<ol class="org-ol"><li><a id="orgheadline30"></a>Agenda Directories<br  /><div class="outline-text-5" id="text-1-5-12-1">
+<p>
+Defines where org-mode should look for agenda files. <b>Note:</b> This is
+likely required for calfw integration to properly
+work. <b>WARNING</b>: All documents listed as agenda files will be
+synced with <code>mobile-org-push</code> and with <code>calfw</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-agenda-files (list <span style="color: #00ff00;">"~/Documents/org-files/todo.org"</span>
+<span style="color: #00ff00;">"~/Documents/org-files/budget.org"</span>))
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline31"></a>org-mobile-directory<br  /><div class="outline-text-5" id="text-1-5-12-2">
+<p>
+Defines the <code>org-mobile-directory</code> and pulls/pushes changes.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-directory <span style="color: #00ff00;">"~/Documents/org-files/"</span>)
+(setq org-mobile-directory <span style="color: #00ff00;">"~/ownCloud/"</span>)
+(setq org-mobile-inbox-for-pull <span style="color: #00ff00;">"~/Documents/org-files/todo.org"</span>)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline32"></a>Calander/Diary Integration<br  /><div class="outline-text-5" id="text-1-5-12-3">
+<p>
+In order to include entries from the Emacs diary into Org mode's
+agenda, you only need to customize the variable. <b>Note:</b> Pretty sure
+this is required in order for calfw to be able to read the defined
+agenda directory.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-agenda-include-diary t)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline33"></a>ox-twbs<br  /><div class="outline-text-5" id="text-1-5-12-4">
+<p>
+Exports <code>org-mode</code> docs as HTML compatitible with the Twitter
+Boostrap. It gives <code>org-mode</code> docs a simple, clean, and modern look.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">ox-twbs</span>)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline34"></a>Additional org-mode-keywords<br  /><div class="outline-text-5" id="text-1-5-12-5">
+<p>
+This adds additional tags to <code>org-mode</code> to increase
+functionality. <code>nil</code> don't add anything, just change the
+keyword. <code>!</code>, <code>time</code> add a time stamp to the task. <code>@</code>, <code>note</code> prompt for a note
+and ad it with template <code>org-log-note-headings</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-log-done t
+org-todo-keywords '((sequence <span style="color: #00ff00;">"TODO(t)"</span> <span style="color: #00ff00;">"STARTED(s!)"</span> <span style="color: #00ff00;">"WAITING(w)"</span> <span style="color: #00ff00;">"QUIZ(q)"</span> <span style="color: #00ff00;">"TEST(t)"</span> <span style="color: #00ff00;">"PAPER(p)"</span> <span style="color: #00ff00;">"HOMEWORK(h)"</span> <span style="color: #00ff00;">"|"</span> <span style="color: #00ff00;">"DONE(d!)"</span> <span style="color: #00ff00;">"CANCELED(c!)"</span>)))
+
+(setq org-todo-keyword-faces
+'(
+(<span style="color: #00ff00;">"TODO"</span> . (<span style="color: #0000ff;">:foreground</span> <span style="color: #00ff00;">"green"</span> <span style="color: #0000ff;">:weight</span> bold))
+(<span style="color: #00ff00;">"STARTED"</span> . (<span style="color: #0000ff;">:foreground</span> <span style="color: #00ff00;">"yellow"</span> <span style="color: #0000ff;">:weight</span> bold))
+(<span style="color: #00ff00;">"WAITING"</span> . (<span style="color: #0000ff;">:foreground</span> <span style="color: #00ff00;">"gray"</span> <span style="color: #0000ff;">:weight</span> bold))
+(<span style="color: #00ff00;">"QUIZ"</span> . (<span style="color: #0000ff;">:foreground</span> <span style="color: #00ff00;">"orange"</span> <span style="color: #0000ff;">:weight</span> bold))
+(<span style="color: #00ff00;">"TEST"</span> . (<span style="color: #0000ff;">:foreground</span> <span style="color: #00ff00;">"orange"</span> <span style="color: #0000ff;">:weight</span> bold))
+(<span style="color: #00ff00;">"PAPER"</span> . (<span style="color: #0000ff;">:foreground</span> <span style="color: #00ff00;">"orange"</span> <span style="color: #0000ff;">:weight</span> bold))
+(<span style="color: #00ff00;">"HOMEWORK"</span> . (<span style="color: #0000ff;">:foreground</span> <span style="color: #00ff00;">"orange"</span> <span style="color: #0000ff;">:weight</span> bold))
+(<span style="color: #00ff00;">"DONE"</span> . (<span style="color: #0000ff;">:foreground</span> <span style="color: #00ff00;">"red"</span> <span style="color: #0000ff;">:weight</span> bold))
+(<span style="color: #00ff00;">"CANCELED"</span> . (<span style="color: #0000ff;">:foreground</span> <span style="color: #00ff00;">"red"</span> <span style="color: #0000ff;">:weight</span> bold))
+))
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline35"></a>Archive Keyword Events<br  /><div class="outline-text-5" id="text-1-5-12-6">
+<p>
+This will archive all specificed files with a certain tag to be put
+into one large file. In this case all <code>DONE</code> events will be placed
+into the file location specified.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #00ffff;">;; </span><span style="color: #00ffff;">(defun my-org-archive-done-tasks ()</span>
+<span style="color: #00ffff;">;;   </span><span style="color: #00ffff;">(interactive)</span>
+<span style="color: #00ffff;">;;   </span><span style="color: #00ffff;">(org-map-entries 'org-archive-subtree "/DONE" 'file))</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+<div id="outline-container-orgheadline37" class="outline-4">
+<h4 id="orgheadline37"><span class="section-number-4">1.5.13</span> highlight-indentation</h4>
+<div class="outline-text-4" id="text-1-5-13">
+<p>
+Simply highlights the amount of times indentation appears within a
+file.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">highlight-indentation</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline38" class="outline-4">
+<h4 id="orgheadline38"><span class="section-number-4">1.5.14</span> fill-column-indicator</h4>
+<div class="outline-text-4" id="text-1-5-14">
+<p>
+This gives a visual marker of where a defined column ends, and where
+text is wrapped.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">fill-column-indicator</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline39" class="outline-4">
+<h4 id="orgheadline39"><span class="section-number-4">1.5.15</span> beacon</h4>
+<div class="outline-text-4" id="text-1-5-15">
+<p>
+Produces an animation whenever tabbing between windows or buffers,
+also when scrolling down a page it shows the cursor position.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">beacon</span>)
+(beacon-mode 1)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline40" class="outline-4">
+<h4 id="orgheadline40"><span class="section-number-4">1.5.16</span> auto-complete-c-headers</h4>
+<div class="outline-text-4" id="text-1-5-16">
+<p>
+Allows correction and detection of headers in C/C++. The following
+initializes auto-complete-c-headers and defines a directory for where
+they are located. And the last two lines tell Emacs to enable these
+for various modes.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">my:ac-c-header-init</span> ()
+(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">auto-complete-c-headers</span>)
+(add-to-list 'ac-sources 'ac-source-c-headers)
+(add-to-list 'achead:include-directories '<span style="color: #00ff00;">" /usr/lib/gcc/x86_64-linux-gnu/4.8/include"</span>))
+
+(add-hook 'c++-mode-hook 'my:ac-c-header-init)
+(add-hook 'c-mode-hook 'my:ac-c-header-init)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline62" class="outline-4">
+<h4 id="orgheadline62"><span class="section-number-4">1.5.17</span> elfeed</h4>
+<div class="outline-text-4" id="text-1-5-17">
+<p>
+<code>elfeed</code> is a great package that implements a customizible RSS feed
+into Emacs.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">elfeed</span>)
+</pre>
+</div>
+</div>
+<ol class="org-ol"><li><a id="orgheadline41"></a>Time Format<br  /><div class="outline-text-5" id="text-1-5-17-1">
+<p>
+This sets the search format for <code>elfeed</code> to display as month/day/year
+hour/min/sec AM/PM.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">elfeed-search-format-date</span> (date)
+(format-time-string <span style="color: #00ff00;">"%m-%d-%Y %I:%M:%S%p"</span> (seconds-to-time date)))
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline42"></a>Default Search Filter<br  /><div class="outline-text-5" id="text-1-5-17-2">
+<p>
+Sets the default filter to be anything that has been posted 3 days ago
+and that is unread.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq-default elfeed-search-filter <span style="color: #00ff00;">"@3-days-ago +unread"</span>)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline43"></a>elfeed Update Timer<br  /><div class="outline-text-5" id="text-1-5-17-3">
+<p>
+Makes <code>elfeed</code> update every 180 seconds or 3 minutes.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(run-with-timer 0 180 'elfeed-update)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline44"></a>RSS Timeout<br  /><div class="outline-text-5" id="text-1-5-17-4">
+<p>
+If <code>elfeed</code> cannot connect to the listed set of RSS sources then it
+will timeout after 10 seconds.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setf url-queue-timeout 10)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline46"></a>elfeed-org<br  /><div class="outline-text-5" id="text-1-5-17-5">
+<p>
+<code>elfeed-org</code> allows listing all rss sources into an org file. The
+second hook initializes elfeed-org.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lis">(require 'elfeed-org)
+(elfeed-org)
+</pre>
+</div>
+</div>
+<ol class="org-ol"><li><a id="orgheadline45"></a>RSS File Directory<br  /><div class="outline-text-6" id="text-1-5-17-5-1">
+<p>
+Defines where <code>elfeed-org</code> should look for list of RSS sources.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq rmh-elfeed-org-files (list <span style="color: #00ff00;">"~/.emacs.d/rss_feed.org"</span>))
+</pre>
+</div>
+</div></li></ol></li>
+<li><a id="orgheadline61"></a>elfeed Tag Bindings<br  /><ol class="org-ol"><li><a id="orgheadline47"></a>All - Recently Updated<br  /><div class="outline-text-6" id="text-1-5-17-6-1">
+<p>
+This binds binds "`" (right above Tab) to display all content that was
+posted an hour ago, and is <code>unread</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">elfeed-default</span>()
+  <span style="color: #00ff00;">"Shows all content posted an hour ago"</span>
+  (interactive)
+  (setq elfeed-search-filter <span style="color: #00ff00;">"@1-hour-ago +unread"</span>)
+  (elfeed-search-update <span style="color: #0000ff;">:force</span>))
+(define-key elfeed-search-mode-map (kbd <span style="color: #00ff00;">"`"</span>) 'elfeed-default)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline51"></a>YouTube<br  /><ol class="org-ol"><li><a id="orgheadline48"></a>YouTube - Uploaded Today (1 day ago)<br  /><div class="outline-text-7" id="text-1-5-17-6-2-1">
+<p>
+This binds "1" to display all YouTube content that was posted 1 day
+ago, and is <code>unread</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">elfeed-yt-today</span>()
+  <span style="color: #00ff00;">"Shows all YouTube videos that were uploaded today."</span>
+  (interactive)
+  (setq elfeed-search-filter <span style="color: #00ff00;">"@1-day-ago +yt +unread"</span>)
+  (elfeed-search-update <span style="color: #0000ff;">:force</span>))
+(define-key elfeed-search-mode-map (kbd <span style="color: #00ff00;">"1"</span>) 'elfeed-yt-today)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline49"></a>YouTube - Uploaded Recently (3 days ago)<br  /><div class="outline-text-7" id="text-1-5-17-6-2-2">
+<p>
+This binds "C-1" to display all YouTube content that was posted 3 days
+ago, and is <code>unread</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">elfeed-yt-recent</span> ()
+  <span style="color: #00ff00;">"Shows recently uploaded YouTube videos."</span>
+  (interactive)
+  (setq elfeed-search-filter <span style="color: #00ff00;">"@3-day-ago +yt +unread"</span>)
+  (elfeed-search-update <span style="color: #0000ff;">:force</span>))
+(define-key elfeed-search-mode-map (kbd <span style="color: #00ff00;">"C-1"</span>) 'elfeed-yt-recent)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline50"></a>Youtube - Uploaded Latterly (3 months ago)<br  /><div class="outline-text-7" id="text-1-5-17-6-2-3">
+<p>
+This binds "S-1" to display all YouTube content that was posted 3
+months ago.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">elfeed-yt</span> ()
+  <span style="color: #00ff00;">"Shows uploaded YouTube videos."</span>
+  (interactive)
+  (setq elfeed-search-filter <span style="color: #00ff00;">"@3-months-ago +yt"</span>)
+  (elfeed-search-update <span style="color: #0000ff;">:force</span>))
+(define-key elfeed-search-mode-map (kbd <span style="color: #00ff00;">"!"</span>) 'elfeed-yt)
+</pre>
+</div>
+</div></li></ol></li>
+<li><a id="orgheadline56"></a>News<br  /><ol class="org-ol"><li><a id="orgheadline55"></a>stallman.org<br  /><ol class="org-ol"><li><a id="orgheadline52"></a>stallman.org - Posted Today (1 day ago)<br  /><div class="outline-text-8" id="text-1-5-17-6-3-1-1">
+<p>
+This binds "2" to display all News content that was posted 1 day ago,
+and is <code>unread</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">elfeed-news-today</span>()
+  <span style="color: #00ff00;">"Shows recent news articles."</span>
+  (interactive)
+  (setq elfeed-search-filter <span style="color: #00ff00;">"@1-day-ago +news +unread"</span>)
+  (elfeed-search-update <span style="color: #0000ff;">:force</span>))
+(define-key elfeed-search-mode-map (kbd <span style="color: #00ff00;">"2"</span>) 'elfeed-news-today)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline53"></a>stallman.org - Posted Recently (3 days ago)<br  /><div class="outline-text-8" id="text-1-5-17-6-3-1-2">
+<p>
+This binds "C-2" to display all News content that was posted 3 days ago,
+and is <code>unread</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">elfeed-news-recent</span>()
+  <span style="color: #00ff00;">"Shows recent news articles."</span>
+  (interactive)
+  (setq elfeed-search-filter <span style="color: #00ff00;">"@3-days-ago +news +unread"</span>)
+  (elfeed-search-update <span style="color: #0000ff;">:force</span>))
+(define-key elfeed-search-mode-map (kbd <span style="color: #00ff00;">"C-2"</span>) 'elfeed-news-recent)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline54"></a>stallman.org - Posted Latterly (3 months ago)<br  /><div class="outline-text-8" id="text-1-5-17-6-3-1-3">
+<p>
+This binds "S-2" to display all News content that was posted 3 months
+ago.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">elfeed-news</span>()
+  <span style="color: #00ff00;">"Shows all news articles."</span>
+  (interactive)
+  (setq elfeed-search-filter <span style="color: #00ff00;">"@3-months-ago +news"</span>)
+  (elfeed-search-update <span style="color: #0000ff;">:force</span>))
+(define-key elfeed-search-mode-map (kbd <span style="color: #00ff00;">"@"</span>) 'elfeed-news)
+</pre>
+</div>
+</div></li></ol></li></ol></li>
+<li><a id="orgheadline60"></a>Private<br  /><ol class="org-ol"><li><a id="orgheadline57"></a>Private - Posted Today (1 day ago)<br  /><div class="outline-text-7" id="text-1-5-17-6-4-1">
+<p>
+This binds "3" to display all Private content that was posted 1 day ago,
+and is <code>unread</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">elfeed-p-today</span>()
+  <span style="color: #00ff00;">"Shows recent lewd content"</span>
+  (interactive)
+  (setq elfeed-search-filter <span style="color: #00ff00;">"@1-day-ago +p +unread"</span>)
+  (elfeed-search-update <span style="color: #0000ff;">:force</span>))
+(define-key elfeed-search-mode-map (kbd <span style="color: #00ff00;">"3"</span>) 'elfeed-p-today)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline58"></a>Private - Posted Recently (3 days ago)<br  /><div class="outline-text-7" id="text-1-5-17-6-4-2">
+<p>
+This binds "C-3" to display all Private content that was posted 3 days ago,
+and is <code>unread</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">elfeed-p-recent</span>()
+  <span style="color: #00ff00;">"Shows recent lewd content"</span>
+  (interactive)
+  (setq elfeed-search-filter <span style="color: #00ff00;">"@3-days-ago +p +unread"</span>)
+  (elfeed-search-update <span style="color: #0000ff;">:force</span>))
+(define-key elfeed-search-mode-map (kbd <span style="color: #00ff00;">"C-3"</span>) 'elfeed-p-recent)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline59"></a>Private - Posted Latterly (3 months ago)<br  /><div class="outline-text-7" id="text-1-5-17-6-4-3">
+<p>
+This binds "S-3" to display all Private content that was posted 3
+months ago.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">elfeed-p</span>()
+  <span style="color: #00ff00;">"Shows all lewd content."</span>
+  (interactive)
+  (setq elfeed-search-filter <span style="color: #00ff00;">"@3-months-ago +p"</span>)
+  (elfeed-search-update <span style="color: #0000ff;">:force</span>))
+(define-key elfeed-search-mode-map (kbd <span style="color: #00ff00;">"#"</span>) 'elfeed-p)
+</pre>
+</div>
+</div></li></ol></li></ol></li></ol>
+</div>
+<div id="outline-container-orgheadline63" class="outline-4">
+<h4 id="orgheadline63"><span class="section-number-4">1.5.18</span> impatient-mode</h4>
+<div class="outline-text-4" id="text-1-5-18">
+<p>
+<code>impatient-mode</code> grants Emacs yet another server functionality. In
+this case <code>impatient-mode</code> is useful for making websites because it
+gives live updates to the browser of changes. <b>Note:</b> In order to
+activate <code>impatient-mode</code>, <code>httpd-start</code> must be activated, or
+<code>httpd-stop</code> to terminate. <code>impatient-mode</code> must be enabled within the
+specific buffer as well. To access the buffer in the browser navigate
+to: <a href="http:///">http:///</a>&lt;localhost/device ip&gt;:8080/imp/.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">impatient-mode</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline64" class="outline-4">
+<h4 id="orgheadline64"><span class="section-number-4">1.5.19</span> yasnippet</h4>
+<div class="outline-text-4" id="text-1-5-19">
+<p>
+Don't really know what this does right now.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">yasnippet</span>)
+(yas-global-mode 1)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline69" class="outline-4">
+<h4 id="orgheadline69"><span class="section-number-4">1.5.20</span> engine-mode</h4>
+<div class="outline-text-4" id="text-1-5-20">
+<p>
+<code>engine-mode</code> is a global minor mode for Emacs. It enables you to
+easily define search engines, bind them to keybindings, and query them
+from the comfort of your editor.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">engine-mode</span>)
+(engine-mode t)
+</pre>
+</div>
+</div>
+<ol class="org-ol"><li><a id="orgheadline68"></a>Search Engines<br  /><div class="outline-text-5" id="text-1-5-20-1">
+<p>
+These are the various search engines that can be used by <code>engine-mode</code>
+and their respective hotkeys.
+</p>
+</div>
+<ol class="org-ol"><li><a id="orgheadline65"></a>StartPage<br  /><div class="outline-text-6" id="text-1-5-20-1-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defengine startpage
+  <span style="color: #00ff00;">"https://www.startpage.com/do/dsearch?query=%s"</span>
+  <span style="color: #0000ff;">:keybinding</span> <span style="color: #00ff00;">"s"</span>)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline66"></a>YouTube<br  /><div class="outline-text-6" id="text-1-5-20-1-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defengine youtube
+  <span style="color: #00ff00;">"https://www.youtube.com/results?search_query=%s"</span>
+  <span style="color: #0000ff;">:keybinding</span> <span style="color: #00ff00;">"y"</span>)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline67"></a>DuckDuckGo<br  /><div class="outline-text-6" id="text-1-5-20-1-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defengine duckduckgo
+  <span style="color: #00ff00;">"https://duckduckgo.com/?q=%s"</span>
+  <span style="color: #0000ff;">:keybinding</span> <span style="color: #00ff00;">"d"</span>)
+</pre>
+</div>
+</div></li></ol></li></ol>
+</div>
+
+<div id="outline-container-orgheadline70" class="outline-4">
+<h4 id="orgheadline70"><span class="section-number-4">1.5.21</span> highlight-indent-guides</h4>
+<div class="outline-text-4" id="text-1-5-21">
+<p>
+Gives a nice line display to show relational brackets.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">require</span> '<span style="color: #ff00ff;">highlight-indent-guides</span>)
+(setq highlight-indent-guides-method 'character)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline71" class="outline-4">
+<h4 id="orgheadline71"><span class="section-number-4">1.5.22</span> Livestreamer to VLC</h4>
+<div class="outline-text-4" id="text-1-5-22">
+<p>
+The following function takes a link that is supported by Livestreamer
+(YouTube/Twitch) and pipes it through an emulated terminal. The
+terminal appears as a hidden buffer and kills itself once the
+Livestreamer session is over.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #ff0000;">defcustom</span> <span style="color: #0000ff;">livestreamer-size</span> <span style="color: #00ff00;">"best"</span>
+  <span style="color: #00ff00;">"The stream size to request from Livestreamer."</span>
+  <span style="color: #0000ff;">:type</span> 'string)
+
+(<span style="color: #ff0000;">defcustom</span> <span style="color: #0000ff;">livestreamer-opts</span> nil
+  <span style="color: #00ff00;">"Additional options to pass to Livestreamer."</span>
+  <span style="color: #0000ff;">:type</span> 'string)
+
+(defvar-local livestreamer-process nil
+  <span style="color: #00ff00;">"The Livestreamer process for a `</span><span style="color: #ff00ff;">livestreamer-mode</span><span style="color: #00ff00;">' buffer."</span>)
+
+(defvar-local livestreamer-url nil
+  <span style="color: #00ff00;">"The current stream URL for a `</span><span style="color: #ff00ff;">livestreamer-mode</span><span style="color: #00ff00;">' buffer."</span>)
+
+(defvar-local livestreamer-current-size nil
+  <span style="color: #00ff00;">"The current stream size for a `</span><span style="color: #ff00ff;">livestreamer-mode</span><span style="color: #00ff00;">' buffer."</span>)
+
+(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">livestreamer-kill-buffer</span> ()
+  <span style="color: #00ff00;">"Safely interrupt running stream players under Livestreamer</span>
+<span style="color: #00ff00;">before killing the buffer."</span>
+  (interactive)
+  (<span style="color: #ff0000;">when</span> (eq major-mode 'livestreamer-mode)
+    (<span style="color: #ff0000;">if</span> (equal 'run (process-status livestreamer-process))
+        (interrupt-process livestreamer-process)
+      (kill-buffer))))
+
+(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">livestreamer-reopen-stream</span> ()
+  <span style="color: #00ff00;">"Re-open the previous stream for this buffer using</span>
+<span style="color: #00ff00;">Livestreamer."</span>
+  (interactive)
+  (<span style="color: #ff0000;">when</span> (eq major-mode 'livestreamer-mode)
+    (<span style="color: #ff0000;">let</span> ((inhibit-read-only t))
+      (goto-char (point-max))
+      (<span style="color: #ff0000;">if</span> (equal 'run (process-status livestreamer-process))
+          <span style="color: #00ffff;">;; </span><span style="color: #00ffff;">Don't try and re-open if the stream ain't closed!</span>
+          (insert (propertize
+                   <span style="color: #00ff00;">"# Cannot re-open stream: a stream is still open.\n"</span>
+                   'face 'font-lock-comment-face))
+        (insert (propertize <span style="color: #00ff00;">"# Re-opening stream...\n"</span>
+                            'face 'font-lock-comment-face))
+        (livestreamer-open livestreamer-url nil nil 'no-erase)))))
+
+(<span style="color: #ff0000;">defvar</span> <span style="color: #0000ff;">livestreamer-mode-map</span>
+  (<span style="color: #ff0000;">let</span> ((map (make-sparse-keymap)))
+    (<span style="color: #ff0000;">prog1</span> map
+      (suppress-keymap map)
+      (define-key map <span style="color: #00ff00;">"q"</span> 'livestreamer-kill-buffer)
+      (define-key map <span style="color: #00ff00;">"r"</span> 'livestreamer-reopen-stream)
+      (define-key map <span style="color: #00ff00;">"n"</span> 'next-line)
+      (define-key map <span style="color: #00ff00;">"p"</span> 'previous-line)))
+  <span style="color: #00ff00;">"Keymap for `</span><span style="color: #ff00ff;">livestreamer-mode</span><span style="color: #00ff00;">'."</span>)
+
+(<span style="color: #ff0000;">define-derived-mode</span> <span style="color: #00ffff;">livestreamer-mode</span> fundamental-mode <span style="color: #00ff00;">"livestreamer"</span>
+  <span style="color: #00ff00;">"A major mode for Livestreamer output."</span>
+  <span style="color: #0000ff;">:group</span> 'helm-twitch
+  (setq truncate-lines t
+        buffer-read-only t)
+  (buffer-disable-undo)
+  (hl-line-mode))
+
+(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">livestreamer--filter</span> (proc output)
+  <span style="color: #00ff00;">"Filter OUTPUT from Livestreamer process PROC for display in</span>
+<span style="color: #00ff00;">the buffer."</span>
+  (<span style="color: #ff0000;">let</span> ((buff (process-buffer proc)))
+    (<span style="color: #ff0000;">when</span> (not (null buff))
+      (<span style="color: #ff0000;">with-current-buffer</span> buff
+        (<span style="color: #ff0000;">let</span> ((inhibit-read-only t))
+          (goto-char (point-max))
+          (insert output))))))
+
+(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">livestreamer--sentinel</span> (proc event)
+  <span style="color: #00ff00;">"Respond when Livestreamer process PROC receives EVENT."</span>
+  (<span style="color: #ff0000;">let</span> ((buff (process-buffer proc)))
+    (<span style="color: #ff0000;">when</span> (not (null buff))
+      (<span style="color: #ff0000;">with-current-buffer</span> buff
+        (<span style="color: #ff0000;">let</span> ((inhibit-read-only t))
+          (goto-char (point-max))
+          (<span style="color: #ff0000;">if</span> (equal event <span style="color: #00ff00;">"finished\n"</span>)
+      (livestreamer-kill-buffer)
+            (insert (propertize (format <span style="color: #00ff00;">"# Livestreamer process had event: %s\n"</span>
+                                        event)
+                                'face 'font-lock-comment-face))))))))
+
+(<span style="color: #ff0000;">defun</span> <span style="color: #00ffff;">livestreamer-open</span> (url <span style="color: #ffff00;">&amp;optional</span> size opts no-erase)
+  (interactive <span style="color: #00ff00;">"sURL: "</span>)
+  <span style="color: #00ff00;">"Opens the stream at URL using the Livestreamer program."</span>
+  (<span style="color: #ff0000;">let*</span> ((cmd  (executable-find <span style="color: #00ff00;">"livestreamer"</span>))
+         (size (or size livestreamer-size))
+         (opts (or opts livestreamer-opts <span style="color: #00ff00;">""</span>))
+         (cmd  (<span style="color: #ff0000;">when</span> cmd (format <span style="color: #00ff00;">"%s %s %s %s"</span> cmd opts url size)))
+         (buff (<span style="color: #ff0000;">when</span> cmd (get-buffer-create <span style="color: #00ff00;">"*livestreamer*"</span>))))
+    (<span style="color: #ff0000;">if</span> cmd
+        (<span style="color: #ff0000;">with-current-buffer</span> buff
+          (bury-buffer buff)
+          (<span style="color: #ff0000;">unless</span> (eq major-mode 'livestreamer-mode)
+            (livestreamer-mode))
+          (<span style="color: #ff0000;">let</span> ((inhibit-read-only t))
+            (<span style="color: #ff0000;">when</span> (not no-erase)
+              (erase-buffer)
+              (insert (propertize (format <span style="color: #00ff00;">"# Livestreamer: %s\n"</span> url)
+                                  'face 'font-lock-comment-face)))
+            (<span style="color: #ff0000;">let</span> ((proc (start-process-shell-command cmd buff cmd)))
+              (setq livestreamer-process proc
+                    livestreamer-url url
+                    livestreamer-current-size size)
+          (set-process-filter proc 'livestreamer--filter)
+              (set-process-sentinel proc 'livestreamer--sentinel))
+          nil))
+      (message <span style="color: #00ff00;">"Could not locate the livestreamer program."</span>))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline72" class="outline-4">
+<h4 id="orgheadline72"><span class="section-number-4">1.5.23</span> Miscellaneous Export Settings</h4>
+<div class="outline-text-4" id="text-1-5-23">
+<p>
+Removes the validate part from bottom of exported HTML file.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-html-validation-link nil)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-08-25 Thu&gt;</span></span></p>
+<p class="author">Author: Maksymilian Rago</p>
+<p class="date">Created: 2016-10-25 Tue 12:39</p>
+<p class="validation"></p>
+</div>
+</body>
+</html>

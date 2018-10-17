@@ -1,4 +1,4 @@
-# Maksymilian M. Rago Emacs Configuration
+# Personal Emacs Configuration
 
 #Preface#
 This repository contains a series of various files that I use in order to organize and intialize my Emacs configuration. If you have any specific questions regarding how something works, or why I use a specific package please send all inqueries to my personal email, maxrago123@gmail.com.
